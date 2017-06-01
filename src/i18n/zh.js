@@ -27,6 +27,23 @@ export default {
         },
     },
     resources: {
+        loanOpts: {
+            name: '数据导入 |||| 数据导入记录',
+            fields: {
+                id: 'ID',
+                batchNo: "批次号",
+                dataType: '数据类型',
+                fileDate: '文件日期',
+                operator: '操作人',
+                createDate: '创建时间',
+            },
+            tabs: {
+                optBasic: '导入类型',
+            },
+            page: {
+                delete: '删除记录',
+            }
+        },
         users: {
             name: '用户 |||| 用户',
             fields: {

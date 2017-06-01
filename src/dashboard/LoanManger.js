@@ -20,10 +20,7 @@ const defaultSubmitLoan = (event) => {
 };
 
 export default translate(({
-    submitLoan = defaultSubmitLoan, loanData = {
-    dataType: 'repay',
-    dateStr: 'no'
-}, translate
+    submitLoan = defaultSubmitLoan, translate
 }) => (
     <Card style={styles.card}>
         <ActionExplore style={styles.icon}/>
@@ -32,15 +29,11 @@ export default translate(({
             <DatePicker hintText="选择日期"
                         okLabel="确定"
                         cancelLabel="取消"
-                        onChange={
-                            (f, date) => loanData.dateStr = date.toString()
-                        }
                         container="inline"/>
             <SelectField
                 style={{ marginRight:100}}
-                value={loanData.dataType}
+                value={'repay'}
                 autoWidth={true}
-                onChange={(event, key, payload) => loanData.dataType = payload}
             >
                 <MenuItem value={'overdue'} primaryText="客户逾期"/>
                 <MenuItem value={'repay'} primaryText="客户还款"/>
@@ -48,7 +41,7 @@ export default translate(({
             <Divider/>
             <CardActions>
                 <RaisedButton label="导入"
-                              onTouchTap={submitLoan(loanData)}
+                              onTouchTap={submitLoan()}
                               primary={true}/>
             </CardActions>
         </div>

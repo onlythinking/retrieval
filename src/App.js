@@ -18,7 +18,8 @@ import {UserList, UserCreate, UserEdit, UserDelete, UserIcon} from './users';
 import {VisitorList, VisitorEdit, VisitorDelete, VisitorIcon} from './visitors';
 import {CommandList, CommandEdit, CommandIcon} from './commands';
 import {ProductList, ProductCreate, ProductEdit, ProductIcon} from './products';
-import {CategoryList, CategoryCreate, CategoryEdit, CategoryDelete ,CategoryIcon} from './categories';
+import {CategoryList, CategoryCreate, CategoryEdit, CategoryDelete, CategoryIcon} from './categories';
+import {LoanOptsList, LoanOptsCreate, LoanOptsDelete, LoanOptsIcon} from './loanOpts';
 import {ReviewList, ReviewEdit, ReviewIcon} from './reviews';
 
 import restClient from './restClient';
@@ -27,11 +28,11 @@ import fakeRestServer from './restServer';
 
 class App extends Component {
     componentWillMount() {
-         //this.restoreFetch = fakeRestServer();
+        //this.restoreFetch = fakeRestServer();
     }
 
     componentWillUnmount() {
-         //this.restoreFetch();
+        //this.restoreFetch();
     }
 
     render() {
@@ -51,18 +52,21 @@ class App extends Component {
                 locale="zh"
                 messages={translations}
             >
-                <Resource name="users" list={UserList} create={UserCreate} edit={UserEdit} remove={UserDelete} icon={UserIcon}/>
-                <Resource name="customers" list={VisitorList} edit={VisitorEdit} remove={VisitorDelete}
-                          icon={VisitorIcon}/>
-                <Resource name="commands" list={CommandList} edit={CommandEdit} remove={Delete} icon={CommandIcon}
-                          options={{ label: 'Orders' }}/>
-                <Resource name="products" list={ProductList} create={ProductCreate} edit={ProductEdit} remove={Delete}
-                          icon={ProductIcon}/>
-                <Resource name="categories" list={CategoryList} create={CategoryCreate} edit={CategoryEdit} remove={Delete}
+                <Resource name="users" list={UserList} create={UserCreate} edit={UserEdit} remove={UserDelete}
+                          icon={UserIcon}/>
+                <Resource name="categories" list={CategoryList} create={CategoryCreate} edit={CategoryEdit}
+                          remove={Delete}
                           icon={CategoryIcon}/>
-/*
-                <Resource name="reviews" list={ReviewList} edit={ReviewEdit} icon={ReviewIcon}/>
-*/
+                <Resource name="loanOpts" list={LoanOptsList} create={LoanOptsCreate} remove={LoanOptsDelete}
+                          icon={LoanOptsIcon}/>
+
+                /*                <Resource name="customers" list={VisitorList} edit={VisitorEdit} remove={VisitorDelete}
+                                          icon={VisitorIcon}/>
+                                <Resource name="commands" list={CommandList} edit={CommandEdit} remove={Delete} icon={CommandIcon}
+                                          options={{ label: 'Orders' }}/>
+                                <Resource name="products" list={ProductList} create={ProductCreate} edit={ProductEdit} remove={Delete}
+                                          icon={ProductIcon}/>
+                                <Resource name="reviews" list={ReviewList} edit={ReviewEdit} icon={ReviewIcon}/>*/
             </Admin>
         );
     }

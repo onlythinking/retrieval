@@ -31,13 +31,6 @@ class Dashboard extends Component {
                 this.setState({newCustomers});
                 this.setState({nbNewCustomers: newCustomers.reduce(nb => ++nb, 0)})
             });
-
-        this.setState({
-            loanData: {
-                dataType: 'overdue',
-                dateStr: 'no'
-            }
-        });
     }
 
     render() {
@@ -45,19 +38,7 @@ class Dashboard extends Component {
             nbNewCustomers,
             newCustomers,
         } = this.state;
-        let {
-            loanData
-        } = this.state;
         const {width} = this.props;
-
-        let submitLoan = (data = {}) => {
-            console.log(data);
-            jsonRestClient(CREATE, 'loans', {
-                data: data
-            }).then(response => {
-                console.log(response);
-            })
-        };
         return (
             <div>
                 {width === 1 && <AppBarMobile title="Posters Galore Admin"/>}
@@ -66,7 +47,7 @@ class Dashboard extends Component {
                     <div style={styles.leftCol}>
                         <div style={styles.singleCol}>
                             <div style={styles.flex}>
-                                <LoanManger loanData={loanData} submitLoan={submitLoan}/>
+                                <LoanManger />
                             </div>
                         </div>
                     </div>

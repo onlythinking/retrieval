@@ -1,6 +1,7 @@
 exports.setRequestUrl = function (app) {
     var user = require('./controllers/UserCtrl');
     var category = require('./controllers/CategoryCtrl');
+    var loanOpt = require('./controllers/LoanOptCtrl');
 
     app.get('/api/users', user.pageList);
     app.get('/api/users/:id', user.findOne);
@@ -13,5 +14,11 @@ exports.setRequestUrl = function (app) {
     app.post('/api/categories', category.create);
     app.put('/api/categories/:id', category.update);
     app.delete('/api/categories/:id', category.delete);
+
+    app.get('/api/loanOpts', loanOpt.pageList);
+    app.get('/api/loanOpts/:id', loanOpt.findOne);
+    app.post('/api/loanOpts', loanOpt.create);
+    app.put('/api/loanOpts/:id', loanOpt.update);
+    app.delete('/api/loanOpts/:id', loanOpt.delete);
     
 }
