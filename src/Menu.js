@@ -17,10 +17,10 @@ import {ReviewIcon} from './reviews';
 
 const items = [
     {name: 'users', icon: <UserIcon />},
-    { name: 'customers', icon: <VisitorIcon /> },
-    { name: 'segments', icon: <LabelIcon /> },
-    { name: 'commands', icon: <CommandIcon /> },
-    { name: 'products', icon: <ProductIcon /> },
+    // { name: 'customers', icon: <VisitorIcon /> },
+    // { name: 'segments', icon: <LabelIcon /> },
+    // { name: 'commands', icon: <CommandIcon /> },
+    // { name: 'products', icon: <ProductIcon /> },
     {name: 'categories', icon: <CategoryIcon />},
     // { name: 'reviews', icon: <ReviewIcon /> },
 ];

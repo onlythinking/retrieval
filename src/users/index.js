@@ -64,9 +64,6 @@ export const UserCreate = (props) => (
                 <TextInput type="password" source="password" validation={{ required: true }}/>
                 <TextInput type="email" source="email" validation={{ email: true }} options={{ fullWidth: true }}
                            style={{ width: 544 }}/>
-                <ImageInput source="pictures" label="头像" accept="image/*">
-                    <ImageField source="avatar" title="title" />
-                </ImageInput>
             </FormTab>
         </TabbedForm>
     </Create>

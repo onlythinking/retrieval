@@ -13,14 +13,15 @@ export default {
             monthly_revenue: '每月收入',
             new_orders: '新订单',
             pending_reviews: '等待审核',
-            new_customers: '新客户',
+            new_customers: '新添用户',
             pending_orders: '等待订单',
+            loan_manager: '数据导入',
             order: {
                 items: 'by %{customer_name}, one item |||| by %{customer_name}, %{nb_items} items',
             },
             welcome: {
-                title: '欢迎来到管理系统0',
-                subtitle: '这是一个虚构的海报店的管理员。可以自由地探索和修改数据——它在你的计算机上是本地的，并且每次重新加载时都会重置。',
+                title: '欢迎来到管理系统',
+                subtitle: '这是一个催收运维管理系统。可以导入数据，查询检索数据问题。',
                 demo_button: '来源这个演示',
             },
         },

@@ -7,5 +7,5 @@ module.exports = {
     username: 'root',
     password: 'fqg.MN.1573',
     remoteBaseDir: '/data/',
-    localBaseDir: '/soft/data/'
+    localBaseDir: '/soft/nodejs/data/'
 };

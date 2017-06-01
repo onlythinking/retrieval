@@ -15,26 +15,40 @@ var ftps = new FTPS({
 
 exports.ftps = ftps;
 
-exports.download = function (remoteDir, localDir, filter, cb) {
-    ftps.mirror({
-        remoteDir: config.remoteBaseDir + remoteDir,
-        localDir: config.localBaseDir + localDir,
-        filter: filter || /\.json$/,
-        parallel: true
-    }).exec(function (err, res) {
-        if (err) {
-            console.log(err);
-            return;
-        }
-        cb();
-    })
+exports.download = function (remoteDir, localDir, filter) {
+    return new Promise(function (resolve, reject) {
+        ftps.mirror({
+            remoteDir: config.remoteBaseDir + remoteDir,
+            localDir: config.localBaseDir + localDir,
+            filter: filter || /\.json$/,
+            parallel: true
+        }).exec(
+            function (error, data) {
+                if (error) {
+                    reject(error);
+                } else {
+                    resolve(data);
+                }
+            }
+        )
+    });
 };
 
 exports.upload = function (remoteDir, localDir, filter) {
-    ftps.mirror({
-        remoteDir: config.remoteBaseDir + remoteDir,
-        localDir: config.localBaseDir + localDir,
-        filter: filter || /\.json$/,
-        upload: true
-    })
+    return new Promise(function (resolve, reject) {
+        ftps.mirror({
+            remoteDir: config.remoteBaseDir + remoteDir,
+            localDir: config.localBaseDir + localDir,
+            filter: filter || /\.json$/,
+            upload: true
+        }).exec(
+            function (error, data) {
+                if (error) {
+                    reject(error);
+                } else {
+                    resolve(data);
+                }
+            }
+        )
+    });
 };

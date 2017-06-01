@@ -1,7 +1,6 @@
 /**
  * Created by sky on 2017/5/31.
  */
-
 module.exports = {
     ding_dang: {
         overdue: 'dingdang/custovdu/',
