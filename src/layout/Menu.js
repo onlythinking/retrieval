@@ -8,14 +8,15 @@ import DashboardIcon from 'material-ui/svg-icons/action/dashboard';
 import LabelIcon from 'material-ui/svg-icons/action/label';
 import {translate, DashboardMenuItem} from 'admin-on-rest';
 
-import {UserIcon} from './users';
-import {CategoryIcon} from './categories';
-import {LoanOptsIcon} from './loanOpts';
+import {UserIcon} from '../users';
+import {CategoryIcon} from '../categories';
+import {LoanOptsIcon} from '../loanOpts';
+import config from '../config/project';
 
-import {VisitorIcon} from './visitors';
-import {CommandIcon} from './commands';
-import {ProductIcon} from './products';
-import {ReviewIcon} from './reviews';
+import {VisitorIcon} from '../visitors';
+import {CommandIcon} from '../commands';
+import {ProductIcon} from '../products';
+import {ReviewIcon} from '../reviews';
 
 const items = [
     {name: 'users', icon: <UserIcon />},
@@ -43,7 +44,7 @@ const Menu = ({onMenuTap, translate, logout}) => (
         <DashboardMenuItem onTouchTap={onMenuTap}/>
         <MenuItem
             target="_blank"
-            href="http://127.0.0.1:8080/mongodb"
+            href={config.mongodb_url}
             primaryText={translate('pos.mongodb')}
             leftIcon={<DashboardIcon />}
             onTouchTap={onMenuTap}

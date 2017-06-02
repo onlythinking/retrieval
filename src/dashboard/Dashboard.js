@@ -5,7 +5,7 @@ import {AppBarMobile, GET_LIST, GET_MANY, CREATE} from 'admin-on-rest';
 import Welcome from './Welcome';
 import NewCustomers from './NewCustomers';
 import LoanManger from './LoanManger';
-import jsonRestClient from '../jsonRestClient';
+import jsonRestClient from '../rest/jsonRestClient';
 
 const styles = {
     welcome: {marginBottom: '2em'},

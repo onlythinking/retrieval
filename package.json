@@ -14,6 +14,7 @@
     "express": "4.13.4",
     "ftps": "^1.1.0",
     "intl": "^1.2.5",
+    "intl-locales-supported": "^1.0.0",
     "jsonfile": "^3.0.0",
     "material-ui": "~0.17.4",
     "meanie-mongoose-to-json": "^1.2.1",
@@ -23,11 +24,13 @@
     "prop-types": "~15.5.7",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
+    "react-intl": "^2.3.0",
     "react-redux": "~5.0.4",
     "react-router-dom": "~4.1.0",
     "react-tap-event-plugin": "~2.0.1",
     "redux-form": "~6.6.2",
-    "redux-saga": "~0.14.6"
+    "redux-saga": "~0.14.6",
+    "shelljs": "^0.7.7"
   },
   "devDependencies": {
     "react-scripts": "1.0.7",
@@ -46,8 +49,9 @@
     "gh-pages": "^0.12.0"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "start": "cross-env NODE_ENV=development react-scripts start",
+    "start-prod": "cross-env NODE_ENV=production react-scripts start",
+    "build": "cross-env NODE_ENV=production react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   }

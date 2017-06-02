@@ -1,15 +1,16 @@
 import 'babel-polyfill';
+import {Intl} from 'intl';
 import React, {Component} from 'react';
 import {jsonServerRestClient, simpleRestClient, Admin, Delete, Resource} from 'admin-on-rest';
 
 import './App.css';
 
-import authClient from './authClient';
+import authClient from './login/authClient';
 import sagas from './sagas';
-import themeReducer from './themeReducer';
-import Login from './Login';
-import Layout from './Layout';
-import Menu from './Menu';
+import themeReducer from './layout/themeReducer';
+import Login from './login/Login';
+import Layout from './layout/Layout';
+import Menu from './layout/Menu';
 import {Dashboard} from './dashboard';
 import customRoutes from './routes';
 import translations from './i18n';
@@ -22,9 +23,9 @@ import {CategoryList, CategoryCreate, CategoryEdit, CategoryDelete, CategoryIcon
 import {LoanOptsList, LoanOptsCreate, LoanOptsDelete, LoanOptsIcon} from './loanOpts';
 import {ReviewList, ReviewEdit, ReviewIcon} from './reviews';
 
-import restClient from './restClient';
-import jsonRestClient from './jsonRestClient';
-import fakeRestServer from './restServer';
+import restClient from './rest/restClient';
+import jsonRestClient from './rest/jsonRestClient';
+import fakeRestServer from './rest/restServer';
 
 class App extends Component {
     componentWillMount() {

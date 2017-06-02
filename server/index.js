@@ -6,7 +6,7 @@ var bodyParser = require('body-parser');
 var PrettyError = require('pretty-error');
 var mongo_express = require('mongo-express/lib/middleware');
 var mongoExpressConfig = require('./config/MongoExpressConfig');
-var configServer = require('./config/config').server;
+var configServer = require('./config/Config').server;
 var mongodbHelper = require("./utils/MongodbHelper")
     , urlRoutes = require("./routes.js");
 
@@ -42,16 +42,6 @@ server.use(function (req, res, next) {
     next();
 });
 
-server.get('/', (req, res, next) => {
-    try {
-        let statusCode = 200;
-        res.status(statusCode);
-        res.send("ok");
-    } catch (err) {
-        next(err);
-    }
-});
-
 server.get('/upload', (req, res, next) => {
     var base64Data = req.rawBody.replace(/^data:image\/png;base64,/, "");
  
@@ -83,7 +73,7 @@ server.use((err, req, res, next) => { // eslint-disable-line no-unused-vars
 
 // Launch the server
 // -----------------------------------------------------------------------------
-server.listen(configServer.port, () => {
+server.listen(configServer.port, configServer.host, () => {
     /* eslint-disable no-console */
-    console.log(`The server is running at http://localhost:${configServer.port}/`);
+    console.log(`The server is running at http://${configServer.host}:${configServer.port}/`);
 });

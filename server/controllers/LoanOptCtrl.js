@@ -11,7 +11,7 @@ exports.create = function (req, res, next) {
     let dataType = req.body.dataType;
     let fileDate = req.body.fileDate;
     // todo
-//    loanService.insertLoan(dataType, dataStr);
+    loanService.insertLoan(dataType, fileDate);
     var userEntity = new loanOpt(
         {
             dataType: dataType,

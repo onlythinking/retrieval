@@ -1,12 +1,6 @@
 /**
  * Created by sky on 2017/5/30.
  */
-/**
- * Convert a `File` object returned by the upload input into
- * a base 64 string. That's easier to use on FakeRest, used on
- * the ng-admin example. But that's probably not the most optimized
- * way to do in a production database.
- */
 const convertFileToBase64 = file => new Promise((resolve, reject) => {
     const reader = new FileReader();
     reader.readAsDataURL(file);
@@ -15,10 +9,6 @@ const convertFileToBase64 = file => new Promise((resolve, reject) => {
     reader.onerror = reject;
 });
 
-/**
- * For users update only, convert uploaded image in base 64 and attach it to
- * the `picture` sent property, with `src` and `title` attributes.
- */
 const addUploadCapabilities = requestHandler => (type, resource, params) => {
     if (type === 'UPDATE' && resource === 'users') {
         if (params.data.pictures && params.data.pictures.length) {

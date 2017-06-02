@@ -21,6 +21,8 @@ import {
     TextInput,
 } from 'admin-on-rest';
 import Icon from 'material-ui/svg-icons/social/poll';
+import {dateParser, dateFormatter} from '../components/CustomDatePicker';
+import intlFormat from '../i18n/intlFormat';
 
 import DeleteButton from '../buttons/DeleteButton';
 
@@ -65,8 +67,9 @@ export const LoanOptsCreate = (props) => (
             { id: 'overdue', name: '客户逾期' },
             { id: 'repay', name: '客户还款' }
         ]} validation={{ required: true }}/>
-                <DateInput source="fileDate"
-                           options={{ hintText: '数据时间', okLabel: '确定', cancelLabel: '取消' }}
+                <DateInput format={dateFormatter} parse={dateParser} source="fileDate"
+                           options={{ hintText: '数据时间', okLabel: '确定', cancelLabel: '取消',
+                           DateTimeFormat: intlFormat.dateTime}}
                 />
             </FormTab>
         </TabbedForm>

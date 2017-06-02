@@ -1,4 +1,4 @@
-var dbUrl = require("../config/config").mongodb.url;
+var dbUrl = require("../config/Config").mongodb.url;
 var mongoose = require('mongoose'),
     Admin = mongoose.mongo.Admin;
 exports.connect = function (cb) {
