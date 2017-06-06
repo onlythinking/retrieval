@@ -1,5 +1,5 @@
 "use strict";
-
+require('date-utils');
 var loanOptModel = require('../models/LoanOpt.js');
 var loanService = require('../scripts/LoanService.js');
 var error = require('../utils/StatusResponse').error;
@@ -9,22 +9,27 @@ var loanOpt = new loanOptModel.Schema("loanOpt").model;
 exports.create = function (req, res, next) {
 
     let dataType = req.body.dataType;
+    let channelType = req.body.channelType;
     let fileDate = req.body.fileDate;
     // todo
-    loanService.insertLoan(dataType, fileDate);
-    var userEntity = new loanOpt(
-        {
-            dataType: dataType,
-            fileDate: fileDate,
-            operator: 'system'
-        }
-    );
-    userEntity.save(function (err, result) {
-        if (err) {
-            return next(err)
-        }
-        res.json(result._id);
-        //success(res, result);
+    loanService.insertLoan(dataType, channelType, fileDate).then(function () {
+        var userEntity = new loanOpt(
+            {
+                dataType: dataType,
+                channelType: channelType,
+                fileDate: fileDate || new Date().toFormat("YYYYMMDD"),
+                operator: 'system'
+            }
+        );
+        userEntity.save(function (err, result) {
+            if (err) {
+                return next(err)
+            }
+            res.json(result._id);
+            //success(res, result);
+        })
+    }, function (err) {
+        return next(err)
     })
 };
 
@@ -52,11 +57,13 @@ exports.pageList = function (req, res, next) {
     let _end = req.query._end || 10;
     let q = req.query.q || ".*";
     let dataType = req.query.dataType || ".*";
+    let channelType = req.query.channelType || ".*";
     let countCondition = ".*" === dataType ? {} : {dataType: dataType};
     loanOpt.count(countCondition, function (err, count) {
         res.set('X-Total-Count', count);
         loanOpt.find({})
             .where('dataType', new RegExp('^' + dataType + '$', "i"))
+            .where('channelType', new RegExp('^' + channelType + '$', "i"))
             .skip(parseInt(_start))
             .limit(_end - _start)
             .sort(_sort)

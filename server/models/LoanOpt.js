@@ -4,6 +4,7 @@ var Schema = mongoose.Schema;
 var userSchema = new Schema({
     batchNo: {type: String},
     dataType: String,
+    channelType: String,
     fileDate: String,
     operator: String,
     createDate: {type: Date, default: Date.now}

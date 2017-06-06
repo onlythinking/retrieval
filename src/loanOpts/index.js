@@ -6,6 +6,7 @@ import {
     DateField,
     DateInput,
     SelectInput,
+    FunctionField,
     Delete,
     Create,
     Edit,
@@ -31,6 +32,10 @@ export const LoanOptsIcon = Icon;
 const LoanOptsFilter = (props) => (
     <Filter {...props}>
         <TextInput label="pos.search" source="q" alwaysOn/>
+        <SelectInput source="channelType" choices={[
+            { id: 'dingdang', name: '叮当' },
+            { id: 'online', name: '线上' }
+        ]}/>
         <SelectInput source="dataType" choices={[
             { id: 'overdue', name: '客户逾期' },
             { id: 'repay', name: '客户还款' }
@@ -50,7 +55,10 @@ export const LoanOptsList = (props) => (
         <Datagrid bodyOptions={{ stripedRows: true, showRowHover: true }}>
             <TextField source="id"/>
             <TextField source="batchNo"/>
-            <TextField source="dataType"/>
+            <FunctionField source="channelType"
+                           render={record => `${record.channelType? record.channelType === 'dingdang' ? '叮当': '线上':''}`}/>
+            <FunctionField source="dataType"
+                           render={record => `${record.dataType? record.dataType === 'overdue' ? '逾期': '回款':''}`}/>
             <TextField source="fileDate"/>
             <TextField source="operator"/>
             <DateField source="createDate" showTime type="date"/>
@@ -63,12 +71,16 @@ export const LoanOptsCreate = (props) => (
     <Create {...props}>
         <TabbedForm>
             <FormTab label="resources.loanOpts.tabs.optBasic">
+                <SelectInput source="channelType" choices={[
+            { id: 'dingdang', name: '叮当' },
+            { id: 'online', name: '线上' }
+        ]} validation={{ required: true }}/>
                 <SelectInput source="dataType" choices={[
             { id: 'overdue', name: '客户逾期' },
             { id: 'repay', name: '客户还款' }
         ]} validation={{ required: true }}/>
                 <DateInput format={dateFormatter} parse={dateParser} source="fileDate"
-                           options={{ hintText: '数据时间', okLabel: '确定', cancelLabel: '取消',
+                           options={{maxDate: new Date(), hintText: '数据时间', okLabel: '确定', cancelLabel: '取消',
                            DateTimeFormat: intlFormat.dateTime}}
                 />
             </FormTab>
@@ -78,7 +90,7 @@ export const LoanOptsCreate = (props) => (
 
 const LoanOptsDeleteTitle = translate(({record, translate}) => <span>
     {translate('resources.loanOpts.page.delete')}&nbsp;
-    {record && `${record.batchNo}`}
+    {record && `${record.fileDate}${record.dataType === 'overdue' ? '逾期' : '回款'}`}
 </span>);
 
 export const LoanOptsDelete = (props) => <Delete {...props} title={<LoanOptsDeleteTitle />}/>;

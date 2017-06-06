@@ -32,6 +32,7 @@ export default {
             fields: {
                 id: 'ID',
                 batchNo: "批次号",
+                channelType: '数据来源',
                 dataType: '数据类型',
                 fileDate: '文件日期',
                 operator: '操作人',
