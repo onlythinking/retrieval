@@ -1,8 +1,0 @@
-{
-  "uid": "retrieval",
-  "append": true,
-  "watch": true,
-  "script": "server.js",
-  "sourceDir": "C:\\sampler\\github\\docker\\skywork\\retrieval\\server"
-  "args": ["NODE_ENV", "production"]
-}
