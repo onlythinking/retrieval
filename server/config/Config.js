@@ -1,7 +1,7 @@
 module.exports = {
     server: {
         port: process.env.PORT || 8889,
-        host: process.env.NODE_ENV === 'production' ? `172.16.20.8` : `127.0.0.1`
+        host: process.env.NODE_ENV === 'production' ? `127.0.0.1` : `127.0.0.1`
     },
     mongodb: {
         db: 'loan',
