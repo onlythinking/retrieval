@@ -22,7 +22,7 @@
     "lodash": "^4.17.4",
     "material-ui": "~0.17.4",
     "meanie-mongoose-to-json": "^1.2.1",
-    "mongo-express": "^0.40.0",
+    "mongo-express": "^0.54.0",
     "mongodb": "^2.2.27",
     "mongoose": "^4.10.3",
     "mysql": "^2.13.0",
